@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/kaczors/lendingapp/badge.svg)](https://coveralls.io/r/kaczors/lendingapp)
+
 # lendingapp
 
 ## How to run?

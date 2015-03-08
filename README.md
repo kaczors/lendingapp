@@ -1,4 +1,4 @@
-[![Build Status](http://img.shields.io/travis/kaczors/lendingapp/master.svg)](https://travis-ci.org/kaczors/lendingapp.svg)
+[![Build Status](https://travis-ci.org/kaczors/lendingapp.svg?branch=master)](https://travis-ci.org/kaczors/lendingapp)
 [![Coverage Status](https://coveralls.io/repos/kaczors/lendingapp/badge.svg?branch=master)](https://coveralls.io/r/kaczors/lendingapp?branch=master)
 
 # lendingapp

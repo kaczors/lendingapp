@@ -34,7 +34,7 @@ public class LoanTest {
                 .hasTerm(expectedTerm)
                 .hasAmount(expectedAmount);
 
-        LoanExtensionAssert.assertThat(getOnlyElement(toBeExtended.getExtensions()))
+        LoanExtensionAssert.assertThat(getOnlyElement(toBeExtended.extensions))
                 .hasAmount(expectedAmount)
                 .hasTerm(expectedTerm)
                 .hasDate(now);

@@ -9,18 +9,21 @@ import javax.validation.constraints.NotNull;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Getter
 @Entity
 public class ApplicationPerIpRegister extends BaseEntity {
     @NotNull
-    private String ip;
+    String ip;
 
     @NotNull
-    private DateTime day;
+    DateTime day;
 
-    private int applicationCount;
+    int applicationCount;
 
     public void register(){
         applicationCount++;
+    }
+
+    public boolean isExceed(int count){
+        return applicationCount > count;
     }
 }

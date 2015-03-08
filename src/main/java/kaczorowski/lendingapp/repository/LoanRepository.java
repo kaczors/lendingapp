@@ -8,7 +8,9 @@ import java.util.List;
 @Repository
 public class LoanRepository extends EntityRepository<Loan> {
     public List<Loan> findByFirstAndLastName(String firstName, String lastName) {
-        return entityManager.createQuery("from Loan where firstName=:firstName and lastName=:lastName", Loan.class)
+        return entityManager.createQuery("from Loan " +
+                " where personalData.firstName=:firstName " +
+                " and personalData.lastName=:lastName", Loan.class)
                 .setParameter("firstName", firstName)
                 .setParameter("lastName", lastName)
                 .getResultList();

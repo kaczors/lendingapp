@@ -1,5 +1,6 @@
 package kaczorowski.lendingapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,18 +11,20 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+
+@JsonAutoDetect(fieldVisibility = ANY)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
-@Getter
 @Entity
 public class LoanExtension extends BaseEntity{
 
     @NotNull
-    private BigDecimal amount;
+    BigDecimal amount;
 
     @NotNull
-    private DateTime term;
+    DateTime term;
 
     @NotNull
-    private DateTime date;
+    DateTime date;
 }

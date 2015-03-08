@@ -117,14 +117,14 @@ public class LendingApplicationAcceptanceTest extends AbstractTestNGSpringContex
         createSampleLoan(JOHN, DOE);
 
         given()
-                .body(json(
-                        "{" +
-                                "   firstName: '" + JOHN + "'," +
-                                "   lastName: '" + DOE + "'," +
-                                "   amount: " + SAMPLE_VALID_AMOUNT + "," +
-                                "   term: '" + SAMPLE_TERM_STRING + "'" +
-                                "}"))
-                .when()
+            .body(json(
+                "{" +
+                "   firstName: '" + JOHN + "'," +
+                "   lastName: '" + DOE + "'," +
+                "   amount: " + SAMPLE_VALID_AMOUNT + "," +
+                "   term: '" + SAMPLE_TERM_STRING + "'" +
+                "}"))
+        .when()
             .post("/loans")
         .then()
             .statusCode(HttpStatus.SC_BAD_REQUEST)

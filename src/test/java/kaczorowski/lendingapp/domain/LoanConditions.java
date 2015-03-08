@@ -13,7 +13,7 @@ public class LoanConditions {
         return new Condition<Loan>() {
             @Override
             public boolean matches(Loan loan) {
-                return Objects.equals(firstName, loan.getFirstName());
+                return Objects.equals(firstName, loan.personalData.firstName);
             }
         };
     }
@@ -22,7 +22,7 @@ public class LoanConditions {
         return new Condition<Loan>() {
             @Override
             public boolean matches(Loan loan) {
-                return Objects.equals(lastName, loan.getLastName());
+                return Objects.equals(lastName, loan.personalData.lastName);
             }
         };
     }

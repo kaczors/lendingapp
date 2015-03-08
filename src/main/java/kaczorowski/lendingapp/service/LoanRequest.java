@@ -1,6 +1,7 @@
 package kaczorowski.lendingapp.service;
 
 import kaczorowski.lendingapp.domain.Loan;
+import kaczorowski.lendingapp.domain.PersonalData;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,10 +34,12 @@ public class LoanRequest {
     @NotNull
     private DateTime term;
 
-    public Loan toLoan(){
+    public Loan toLoan() {
         return Loan.builder()
-                .firstName(firstName)
-                .lastName(lastName)
+                .personalData(PersonalData.builder()
+                        .firstName(firstName)
+                        .lastName(lastName)
+                        .build())
                 .amount(amount)
                 .term(term)
                 .build();

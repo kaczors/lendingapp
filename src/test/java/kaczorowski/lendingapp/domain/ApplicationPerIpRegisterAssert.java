@@ -12,10 +12,14 @@ public class ApplicationPerIpRegisterAssert extends AssertionHelper<ApplicationP
     }
 
     public ApplicationPerIpRegisterAssert hasIp(String ip) {
-        return failIfNotEqual("ip", actual.getIp(), ip);
+        return failIfNotEqual("ip", actual.ip, ip);
     }
 
     public ApplicationPerIpRegisterAssert hasDay(DateTime day) {
-        return failIfNotEqual("day", actual.getDay(), day);
+        return failIfNotEqual("day", actual.day, day);
+    }
+
+    public ApplicationPerIpRegisterAssert hasApplicationCount(int count){
+        return failIfNotEqual("applicationCount", actual.applicationCount, count);
     }
 }

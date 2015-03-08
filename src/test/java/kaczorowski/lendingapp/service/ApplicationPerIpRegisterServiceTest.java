@@ -2,6 +2,7 @@ package kaczorowski.lendingapp.service;
 
 import com.google.common.base.Optional;
 import kaczorowski.lendingapp.domain.ApplicationPerIpRegister;
+import kaczorowski.lendingapp.domain.ApplicationPerIpRegisterAssert;
 import kaczorowski.lendingapp.repository.ApplicationPerIpRegisterRepository;
 import org.joda.time.DateTime;
 import org.mockito.Mock;
@@ -79,7 +80,7 @@ public class ApplicationPerIpRegisterServiceTest {
         applicationPerIpRegisterService.register(SAMPLE_IP, SAMPLE_TIME);
 
         //then
-        assertThat(register.getApplicationCount()).isEqualTo(currentApplications + 1);
+        ApplicationPerIpRegisterAssert.assertThat(register).hasApplicationCount(currentApplications + 1);
     }
 
     @Test

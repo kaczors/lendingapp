@@ -1,5 +1,7 @@
 package kaczorowski.lendingapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,6 +10,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.joda.time.DateTime;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.DecimalMax;
@@ -16,10 +19,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 import static java.math.BigDecimal.valueOf;
 import static lombok.AccessLevel.PRIVATE;
 
-@Getter
+@JsonAutoDetect(fieldVisibility = ANY)
 @Entity
 @Builder
 @NoArgsConstructor(access = PRIVATE)
@@ -27,18 +31,16 @@ import static lombok.AccessLevel.PRIVATE;
 public class Loan extends BaseEntity {
     public static final String MAX_AMOUNT_STRING_REPRESENTATION = "10000";
 
-    @NotBlank
-    private String firstName;
-
-    @NotBlank
-    private String lastName;
+    @JsonUnwrapped
+    @Embedded
+    PersonalData personalData;
 
     @DecimalMax(MAX_AMOUNT_STRING_REPRESENTATION)
     @NotNull
-    private BigDecimal amount;
+    BigDecimal amount;
 
     @NotNull
-    private DateTime term;
+    DateTime term;
 
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     List<LoanExtension> extensions = new ArrayList<>();

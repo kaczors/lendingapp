@@ -2,6 +2,7 @@ package kaczorowski.lendingapp.repository;
 
 import kaczorowski.lendingapp.LendingApplication;
 import kaczorowski.lendingapp.domain.Loan;
+import kaczorowski.lendingapp.domain.PersonalData;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -32,8 +33,10 @@ public class EntityRepositoryTest extends AbstractTransactionalTestNGSpringConte
         //given
         Loan loan = entityRepository.save(Loan.builder()
                 .amount(BigDecimal.ONE)
-                .firstName("firstname")
-                .lastName("lastname")
+                .personalData(PersonalData.builder()
+                        .firstName("firstName")
+                        .lastName("lastName")
+                        .build())
                 .term(DateTime.now())
                 .build());
 

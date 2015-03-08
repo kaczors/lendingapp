@@ -15,15 +15,15 @@ public class LoanExtensionAssert extends AssertionHelper<LoanExtensionAssert, Lo
     }
 
     public LoanExtensionAssert hasTerm(DateTime term) {
-        return failIfNotEqual("term", actual.getTerm(), term);
+        return failIfNotEqual("term", actual.term, term);
     }
 
     public LoanExtensionAssert hasAmount(BigDecimal amount) {
-        return failIfNotEqual("amount", actual.getAmount(), amount);
+        return failIfNotEqual("amount", actual.amount, amount);
     }
 
     public LoanExtensionAssert hasDate(DateTime date) {
-        return failIfNotEqual("date", actual.getDate(), date);
+        return failIfNotEqual("date", actual.date, date);
     }
 
 }

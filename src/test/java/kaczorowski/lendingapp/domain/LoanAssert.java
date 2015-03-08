@@ -15,11 +15,19 @@ public class LoanAssert extends AssertionHelper<LoanAssert, Loan> {
     }
 
     public LoanAssert hasTerm(DateTime term) {
-        return failIfNotEqual("term", actual.getTerm(), term);
+        return failIfNotEqual("term", actual.term, term);
+    }
+
+    public LoanAssert hasFirstName(String firstName){
+        return failIfNotEqual("firstName", actual.personalData.firstName, firstName);
+    }
+
+    public LoanAssert hasLastName(String lastName){
+        return failIfNotEqual("lastName", actual.personalData.lastName, lastName);
     }
 
     public LoanAssert hasAmount(BigDecimal amount) {
-        return failIfNotEqual("amount", actual.getAmount(), amount);
+        return failIfNotEqual("amount", actual.amount, amount);
     }
 
 }

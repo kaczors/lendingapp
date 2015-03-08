@@ -36,7 +36,7 @@ public class ApplicationPerIpRegisterService {
 
     public void assertApplicationCountNotExceeded(String ip, DateTime now) {
         Optional<ApplicationPerIpRegister> maybeApplicationRegister = applicationPerIpRegisterRepository.findByIpAndDate(ip, now.withTimeAtStartOfDay());
-        if (maybeApplicationRegister.isPresent() && maybeApplicationRegister.get().getApplicationCount() > MAXIMUM_APPLICATIONS_PER_DAY_FROM_SINGLE_IP) {
+        if (maybeApplicationRegister.isPresent() && maybeApplicationRegister.get().isExceed(MAXIMUM_APPLICATIONS_PER_DAY_FROM_SINGLE_IP)) {
             throw new IllegalStateException("Exceeded maximum number of applications per day.");
         }
     }

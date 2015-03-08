@@ -2,9 +2,12 @@ package kaczorowski.lendingapp.service;
 
 
 import kaczorowski.lendingapp.domain.Loan;
+import kaczorowski.lendingapp.domain.LoanAssert;
 import kaczorowski.lendingapp.repository.LoanRepository;
 import kaczorowski.lendingapp.util.TimeProvider;
 import org.joda.time.DateTime;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -44,6 +47,8 @@ public class LoanServiceTest {
     LoanRepository loanRepository;
     @Mock
     ApplicationPerIpRegisterService applicationPerIpRegisterService;
+    @Captor
+    ArgumentCaptor<Loan> loan;
 
     @BeforeMethod
     public void setUp() {
@@ -102,7 +107,12 @@ public class LoanServiceTest {
         loanService.createLoan(loanRequest, IP);
 
         //then
-        verify(loanRepository).save(refEq(loanRequest.toLoan()));
+        verify(loanRepository).save(loan.capture());
+        LoanAssert.assertThat(loan.getValue())
+                .hasAmount(loanRequest.getAmount())
+                .hasTerm(loanRequest.getTerm())
+                .hasFirstName(loanRequest.getFirstName())
+                .hasLastName(loanRequest.getLastName());
     }
 
     @DataProvider(name = "registerInIpRegisterDP")
